@@ -1,7 +1,15 @@
-Argentina,x,,,Arabia Saudita,Tito
-Polonia,,x,, Mexico,Tito
-Brasil,x,,,Peru,Tito
+Argentina,x,,,Arabia Saudita,Tito,Ronda1
+Polonia,,x,, Mexico,Tito,Ronda1
+Brasil,x,,,Peru,Tito,Ronda1
 *
-Argentina,x,,,Arabia Saudita,Marlop
-Polonia,,x,, Mexico,Marlop
-Brasil,x,,,Peru,Marlop
+Argentina,,,x,Arabia Saudita,Marlop,Ronda1
+Polonia,,x,, Mexico,Marlop,Ronda1
+Brasil,x,,,Peru,Marlop,Ronda1
+*
+Argentina,x,,,Arabia Saudita,Tito,Ronda2
+Polonia,,x,, Mexico,Tito,Ronda2
+Brasil,x,,,Peru,Tito,Ronda2
+*
+Argentina,,,x,Arabia Saudita,Marlop,Ronda2
+Polonia,,x,, Mexico,Marlop,Ronda2
+Brasil,x,,,Peru,Marlop,Ronda2

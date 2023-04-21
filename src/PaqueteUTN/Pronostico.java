@@ -8,13 +8,18 @@ public class Pronostico {
 	private Participante participante;
 	
 	
+
 	public Pronostico(Equipo equipo, Partido partido, String resultado, Participante participante) {
 		super();
 		this.equipo = equipo;
 		this.partido = partido;
 		this.resultado = resultado;
 		this.participante = participante;
+		
+		
+		
 	}
+	
 	public Equipo getEquipo() {
 		return equipo;
 	}
