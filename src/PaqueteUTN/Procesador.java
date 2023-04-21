@@ -1,13 +1,11 @@
 package PaqueteUTN;
 
 import java.io.IOException;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 public class Procesador {
@@ -68,9 +66,7 @@ public class Procesador {
 		try {
 			lineasPronosticos = Files.readAllLines(pathPronosticos);
 		} catch (IOException e) {
-
 			System.out.println("No se PUede leer Pronosticos");
-
 		}
 
 		for (String lineaPronostico : lineasPronosticos) {
@@ -79,13 +75,15 @@ public class Procesador {
 				continue;
 
 			String[] campos = lineaPronostico.split(",");
+			
 			Equipo equipo1 = new Equipo(campos[0].trim());
 			Equipo equipo2 = new Equipo(campos[4].trim());
 			Participante participante = new Participante(campos[5].trim());
+			
 			Ronda ronda = null;
 			// Busco si ya tengo la ronda almacenada de la lista
 			for (Ronda r : rondas) {
-// Verifico que el nombre de la ronda coincida con el archivo.
+			// Verifico que el nombre de la ronda coincida con el archivo.
 
 				if (r.getNombreRonda().equals(campos[6].trim())) {
 					ronda = r;
@@ -94,6 +92,7 @@ public class Procesador {
 			// Si la ronda esta en null, no se encontro la ronda, y creo una nueva
 			if (ronda == null) {
 				ronda = new Ronda(campos[6].trim());
+				rondas.add(ronda);
 			}
 
 			Partido partido = null;
@@ -101,34 +100,23 @@ public class Procesador {
 			for (Partido partidoCol : partidos) {
 				if (partidoCol.getEquipo1().getNombre().trim().equals(equipo1.getNombre().trim())
 						&& partidoCol.getEquipo2().getNombre().trim().equals(equipo2.getNombre().trim())) {
-
 					partido = partidoCol;
 				}
-
 			}
 
-			Equipo equipo = null;
-			String resultado = null;
-
+			Apuesta resultado;
 			if ("x".equals(campos[1])) {
-				equipo = equipo1;
-				resultado = "GANADOR";
-
+				resultado = Apuesta.GANADOR;
 			}
-			if ("x".equals(campos[2])) {
-				equipo = equipo1;
-				resultado = "EMPATE";
+			else if ("x".equals(campos[2])) {
+				resultado = Apuesta.EMPATE;
 			}
-
-			if ("x".equals(campos[3])) {
-				equipo = equipo1;
-				resultado = "PERDEDOR";
+			else {
+				resultado = Apuesta.PERDEDOR;
 			}
 
-			Pronostico pronostico = new Pronostico(equipo, partido, resultado, participante);
+			Pronostico pronostico = new Pronostico(equipo1, partido, resultado, participante);
 			ronda.getPronosticos().add(pronostico);
-			rondas.add(ronda);
-
 		}
 		return rondas;
 

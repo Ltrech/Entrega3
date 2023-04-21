@@ -4,18 +4,16 @@ public class Pronostico {
 	
 	private Equipo equipo;
 	private Partido partido;
-	private String resultado;
 	private Participante participante;
-	
+	private Apuesta apuesta;
 	
 
-	public Pronostico(Equipo equipo, Partido partido, String resultado, Participante participante) {
+	public Pronostico(Equipo equipo, Partido partido, Apuesta apuesta, Participante participante) {
 		super();
 		this.equipo = equipo;
-		this.partido = partido;
-		this.resultado = resultado;
+		this.partido = partido;;
 		this.participante = participante;
-		
+		this.apuesta = apuesta;
 		
 		
 	}
@@ -26,9 +24,6 @@ public class Pronostico {
 	public Partido getPartido() {
 		return partido;
 	}
-	public String getResultado() {
-		return resultado;
-	}
 	
 	public Participante getParticipante() {
 		return participante;
@@ -37,13 +32,21 @@ public class Pronostico {
 		this.participante = participante;
 	}
 	public int puntos () {
-		String resultadoReal = this.partido.resultado(this.equipo);
-		if(this.resultado.equals(resultadoReal)) {
+		Apuesta resultadoReal = this.partido.resultado(this.equipo);
+		if(this.getApuesta().equals(resultadoReal)) {
 		return 1;
 		}else {
 			return 0;
 		}
 				
+	}
+
+	public Apuesta getApuesta() {
+		return apuesta;
+	}
+
+	public void setApuesta(Apuesta apuesta) {
+		this.apuesta = apuesta;
 	}
 
 }

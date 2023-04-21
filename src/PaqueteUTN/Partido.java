@@ -61,23 +61,24 @@ public class Partido {
 	}
 
 	
-	public String resultado(Equipo equipo) {
+	public Apuesta resultado(Equipo equipo) {
+		
 		if (golesEq1 == golesEq2) {
-			return "EMPATE";
+			return Apuesta.EMPATE;
 		}
 	
 	if(equipo.getNombre().equals(equipo1.getNombre())) {
 		if(golesEq1>golesEq2) {
-			return "GANADOR";
+			return Apuesta.GANADOR;
 		}else {
-			return "PERDEDOR";
+			return Apuesta.PERDEDOR;
 		}
 		
 	}else {
 		if (golesEq2 > golesEq1) {
-			return "GANADOR";
+			return Apuesta.GANADOR;
 		}else {
-			return "PERDEDOR";
+			return Apuesta.PERDEDOR;
 		}
 	}
 	}
