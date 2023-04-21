@@ -138,7 +138,10 @@ public class Procesador {
 		for (Resultado resultado : resultados) {
 
 			System.out.println(resultado.getParticipante().getNombre());
-			System.out.println(resultado.getPuntos());
+			System.out.println("Puntos: "+resultado.getPuntos());
+			System.out.println("Aciertos: "+resultado.getAciertos());
+			
+
 		}
 
 	}
