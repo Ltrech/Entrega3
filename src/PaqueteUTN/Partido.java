@@ -50,8 +50,6 @@ public class Partido {
 		this.golesEq1 = golesEq1;
 	}
 
-
-
 	public int getGolesEq2() {
 		return golesEq2;
 	}

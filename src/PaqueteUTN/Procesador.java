@@ -75,24 +75,26 @@ public class Procesador {
 				continue;
 
 			String[] campos = lineaPronostico.split(",");
-			
+
 			Equipo equipo1 = new Equipo(campos[0].trim());
 			Equipo equipo2 = new Equipo(campos[4].trim());
 			Participante participante = new Participante(campos[5].trim());
-			
+
 			Ronda ronda = null;
 			// Busco si ya tengo la ronda almacenada de la lista
 			for (Ronda r : rondas) {
-			// Verifico que el nombre de la ronda coincida con el archivo.
+				// Verifico que el nombre de la ronda coincida con el archivo.
 
 				if (r.getNombreRonda().equals(campos[6].trim())) {
 					ronda = r;
+					System.out.println(r.getNombreRonda());
 				}
 			}
 			// Si la ronda esta en null, no se encontro la ronda, y creo una nueva
 			if (ronda == null) {
 				ronda = new Ronda(campos[6].trim());
 				rondas.add(ronda);
+
 			}
 
 			Partido partido = null;
@@ -107,11 +109,9 @@ public class Procesador {
 			Apuesta resultado;
 			if ("x".equals(campos[1])) {
 				resultado = Apuesta.GANADOR;
-			}
-			else if ("x".equals(campos[2])) {
+			} else if ("x".equals(campos[2])) {
 				resultado = Apuesta.EMPATE;
-			}
-			else {
+			} else {
 				resultado = Apuesta.PERDEDOR;
 			}
 
@@ -138,9 +138,8 @@ public class Procesador {
 		for (Resultado resultado : resultados) {
 
 			System.out.println(resultado.getParticipante().getNombre());
-			System.out.println("Puntos: "+resultado.getPuntos());
-			System.out.println("Aciertos: "+resultado.getAciertos());
-			
+			System.out.println("Puntos: " + resultado.getPuntos());
+			System.out.println("se veran reflejados los puntos extra si los tiene : " + resultado.getAciertos());
 
 		}
 
@@ -168,28 +167,32 @@ public class Procesador {
 					if (participante.getNombre().equals(resultado.getParticipante().getNombre())) {
 						resultadoParticipante = resultado;
 						resultadoParticipante.setPuntos(resultadoParticipante.getPuntos() + pronostico.puntos());
-						if(pronostico.puntos() != 0) {
-							resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 1 );
+						if (pronostico.puntos() != 0) {
+							resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 1);
+
+							if (resultadoParticipante.getPuntos() >= 6) {
+								resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 2);
+
+							}
+
 						}
 					}
 
 				}
-				
 
 				if (resultadoParticipante == null) {
 					resultadoParticipante = new Resultado();
 					resultadoParticipante.setParticipante(participante);
 					resultadoParticipante.setPuntos(pronostico.puntos());
 					// Voy sumando los aciertos ..
-					if(pronostico.puntos() != 0) {
+					if (pronostico.puntos() != 0) {
 						resultadoParticipante.setAciertos(1);
 					}
+
 					resultados.add(resultadoParticipante);
-					
 
 				}
 
-				
 			}
 		}
 		return resultados;
