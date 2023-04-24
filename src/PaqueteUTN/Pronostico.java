@@ -31,6 +31,11 @@ public class Pronostico {
 	public void setParticipante(Participante participante) {
 		this.participante = participante;
 	}
+	
+	/**
+	 * El metodo Puntos asigna 1 punto cada vez q el apostador acierta
+	 * @return
+	 */
 	public int puntos () {
 		Apuesta resultadoReal = this.partido.resultado(this.equipo);
 		if(this.getApuesta().equals(resultadoReal)) {

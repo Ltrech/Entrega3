@@ -133,13 +133,21 @@ public class Procesador {
 
 	}
 
+	/**
+	 * Genero el Metodo imprimirResultado para Mostrar por consola Los resultados
+	 * @param resultados
+	 */
 	private void imprimirResultado(Collection<Resultado> resultados) {
 
 		for (Resultado resultado : resultados) {
 
+			System.out.println("********* PRODE ************");
 			System.out.println(resultado.getParticipante().getNombre());
+			System.out.println("***********************************");
 			System.out.println("Puntos: " + resultado.getPuntos());
+			System.out.println("***********************************");
 			System.out.println("Aciertos: " + resultado.getAciertos());
+			System.out.println("***********************************");
 
 
 		}
@@ -170,9 +178,10 @@ public class Procesador {
 						resultadoParticipante.setPuntos(resultadoParticipante.getPuntos() + pronostico.puntos());
 						if (pronostico.puntos() != 0) {
 							resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 1);
-
+					
 							if (resultadoParticipante.getAciertos() == resultadoParticipante.getCantPartidos()) {
 								resultadoParticipante.setPuntos(resultadoParticipante.getPuntos() + 2);
+								
 							}
 
 						}
