@@ -87,7 +87,7 @@ public class Procesador {
 
 				if (r.getNombreRonda().equals(campos[6].trim())) {
 					ronda = r;
-					System.out.println(r.getNombreRonda());
+					//System.out.println(r.getNombreRonda());
 				}
 			}
 			// Si la ronda esta en null, no se encontro la ronda, y creo una nueva
@@ -139,7 +139,8 @@ public class Procesador {
 
 			System.out.println(resultado.getParticipante().getNombre());
 			System.out.println("Puntos: " + resultado.getPuntos());
-			System.out.println("se veran reflejados los puntos extra si los tiene : " + resultado.getAciertos());
+			System.out.println("Aciertos: " + resultado.getAciertos());
+
 
 		}
 
@@ -170,9 +171,8 @@ public class Procesador {
 						if (pronostico.puntos() != 0) {
 							resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 1);
 
-							if (resultadoParticipante.getPuntos() >= 6) {
-								resultadoParticipante.setAciertos(resultadoParticipante.getAciertos() + 2);
-
+							if (resultadoParticipante.getAciertos() == resultadoParticipante.getCantPartidos()) {
+								resultadoParticipante.setPuntos(resultadoParticipante.getPuntos() + 2);
 							}
 
 						}
@@ -182,6 +182,7 @@ public class Procesador {
 
 				if (resultadoParticipante == null) {
 					resultadoParticipante = new Resultado();
+					resultadoParticipante.setCantPartidos(ronda.getPronosticos().size());
 					resultadoParticipante.setParticipante(participante);
 					resultadoParticipante.setPuntos(pronostico.puntos());
 					// Voy sumando los aciertos ..

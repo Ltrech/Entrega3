@@ -6,7 +6,16 @@ public class Resultado {
 	private int puntos;
 	private int aciertos;
 	
+  private int cantPartidos;
+   
 	
+	
+	public int getCantPartidos() {
+	return cantPartidos;
+}
+public void setCantPartidos(int cantPartidos) {
+	this.cantPartidos = cantPartidos;
+}
 	public Participante getParticipante() {
 		return participante;
 	}
